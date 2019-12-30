@@ -1,0 +1,14 @@
+Gemfile.lock
+gemfiles/*.lock
+*.sw?
+.DS_Store
+coverage
+rdoc
+pkg
+\#*
+.#*
+.rvmrc
+*.gem
+/nbproject
+.idea/
+bitmask_attributes-test
