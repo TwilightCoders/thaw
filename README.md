@@ -1,7 +1,8 @@
 [![Version      ](https://img.shields.io/gem/v/thaw.svg)](https://rubygems.org/gems/thaw)
 [![Build Status ](https://travis-ci.org/TwilightCoders/thaw.svg)](https://travis-ci.org/TwilightCoders/thaw)
-[![Code Climate ](https://api.codeclimate.com/v1/badges/606df1b8c3c69772a11d/maintainability)](https://codeclimate.com/github/TwilightCoders/thaw/maintainability)
+[![Dependencies  ](https://img.shields.io/librariesio/github/twilightcoders/thaw)](https://github.com/TwilightCoders/thaw/network/dependencies)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/606df1b8c3c69772a11d/test_coverage)](https://codeclimate.com/github/TwilightCoders/thaw/test_coverage)
+[![Code Climate ](https://api.codeclimate.com/v1/badges/606df1b8c3c69772a11d/maintainability)](https://codeclimate.com/github/TwilightCoders/thaw/maintainability)
 
 ## Thaw
 
