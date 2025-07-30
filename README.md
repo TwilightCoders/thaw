@@ -1,8 +1,8 @@
-[![Version      ](https://img.shields.io/gem/v/thaw.svg)](https://rubygems.org/gems/thaw)
-[![Build Status ](https://travis-ci.org/TwilightCoders/thaw.svg)](https://travis-ci.org/TwilightCoders/thaw)
-[![Dependencies  ](https://img.shields.io/librariesio/github/twilightcoders/thaw)](https://github.com/TwilightCoders/thaw/network/dependencies)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/606df1b8c3c69772a11d/test_coverage)](https://codeclimate.com/github/TwilightCoders/thaw/test_coverage)
-[![Code Climate ](https://api.codeclimate.com/v1/badges/606df1b8c3c69772a11d/maintainability)](https://codeclimate.com/github/TwilightCoders/thaw/maintainability)
+[![Gem Version](https://badge.fury.io/rb/thaw.svg)](https://badge.fury.io/rb/thaw)
+[![CI](https://github.com/TwilightCoders/thaw/actions/workflows/ci.yml/badge.svg)](https://github.com/TwilightCoders/thaw/actions/workflows/ci.yml)
+[![Maintainability](https://qlty.sh/badges/8dcc3d6f-7bae-4b03-bd4a-aba0103be001/maintainability.svg)](https://qlty.sh/gh/TwilightCoders/projects/thaw)
+[![Test Coverage](https://qlty.sh/badges/8dcc3d6f-7bae-4b03-bd4a-aba0103be001/test_coverage.svg)](https://qlty.sh/gh/TwilightCoders/projects/thaw/metrics/code?sort=coverageRating)
+![GitHub License](https://img.shields.io/github/license/twilightcoders/thaw)
 
 ## Thaw
 
@@ -12,11 +12,40 @@ Note: You probably don't need to use this gem, you probably want to [`.dup`](htt
 
 ### Compatibility
 
-To-date, `thaw` works in Ruby `2.0` through `2.6`<sup>1</sup>.
+The gem **supports Ruby 2.7+** with significant safety concerns:
 
-Check the [build status](https://travis-ci.org/TwilightCoders/thaw) for the most current compatibility.
+- **Native C extension**: The only available implementation, extremely dangerous
+- **Safe fallback**: If compilation fails, shows error message and guides users to Object#dup
 
-<sup>1</sup>There seems to be a segmentation fault in Ruby `2.7` that I haven't had time to investigate.
+**⚠️ IMPORTANT:** The native extension is **extremely dangerous** and may cause crashes, memory corruption, or undefined behavior.
+
+**Strong Recommendation:** Use [`Object#dup`](https://www.rubyguides.com/2018/11/dup-vs-clone/) instead of trying to unfreeze objects.
+
+### Native C Extension
+
+The gem uses a **native C extension** to implement object unfreezing:
+
+```bash
+gem install thaw
+```
+
+**⚠️ EXTREME WARNING:** The native extension:
+- Manipulates Ruby's internal object representation directly
+- **Will likely cause segmentation faults** on modern Ruby versions
+- May have platform-specific compilation issues
+- Goes against Ruby's fundamental design principles
+- Requires a C compiler and Ruby development headers
+
+### No Ruby Fallback
+
+The dangerous Ruby/Fiddle fallback implementation has been **removed for safety**. If the native extension isn't available, the gem will show clear error messages and guide users toward `Object#dup`.
+
+### Current Status
+
+The gem is maintained for:
+- Historical compatibility and documentation
+- Clear deprecation warnings to guide users toward better alternatives
+- Demonstration of the risks involved in low-level object manipulation
 
 ### Installation
 
